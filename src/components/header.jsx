@@ -9,12 +9,17 @@ export function HomeHeader() {
           <div className="topRightCorner"></div>
           <div className="bottomLeftCorner"></div>
           <div className="bottomRightCorner"></div>
-          <div className="innerSpace"><DayDate /></div>
+          <div className="innerSpace">
+            <DayDate />
+          </div>
         </div>
-        
+
         <p className="calendarName">Calendar</p>
         <button className="buttonToday rounded py-2 px-5">Today</button>
-      
+        <div className="arrow">
+          <span class="material-symbols-outlined px-2 py-1">arrow_back_ios</span>
+          <span class="material-symbols-outlined">arrow_forward_ios</span>
+        </div>
       </div>
     </>
   );
