@@ -1,0 +1,86 @@
+.header{
+  height: 5em;
+}
+.calendarLogo {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  position: relative; /* Ensure parent div has relative positioning */
+}
+.topRightCorner {
+  width: 0.5rem; /* Adjust as needed */
+  height: 0.5rem; /* Adjust as needed */
+  background-color: #1967d2; /* Red color */
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top-right-radius: 25%;
+  z-index: 1;
+}
+.bottomLeftCorner {
+  width: 0.5rem; /* Adjust as needed */
+  height: 0.5rem; /* Adjust as needed */
+  background-color: #188038; /* Red color */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-bottom-left-radius: 25%;
+  z-index: 1;
+}
+.bottomRightCorner {
+  width: 0; /* Adjust as needed */
+  height: 0; /* Adjust as needed */
+  border-top: 0.5rem solid #FF0000; /* Red color */
+  border-right: 0.5rem solid transparent; /* Transparent to create triangle */
+  background-color: white; /* White color for the other half */
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.innerSpace {
+  width: calc(100% - 4px); /* Adjusted width considering border */
+  height: calc(100% - 4px); /* Adjusted height considering border */
+  background-color: white; /* White space */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.calendarLogo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-left: 8px solid #4285f4; /* Left border blue*/
+  border-top: 8px solid #4285f4; /* Top border blue */
+  border-right: 8px solid #fbbc04; /* Right border yellow */
+  border-bottom: 8px solid #34a853; /* Bottom border green */
+  box-sizing: border-box;
+  border-radius: 7%;
+}
+
+.calendarName{
+  font-size:x-large;
+  color: grey;
+  margin-left: 6rem;
+  position: relative;
+  bottom: 2.5rem;
+}
+.buttonToday{
+  width: 5rem;
+  height: 2.5rem;
+  margin-left: 16rem;
+  position: relative;
+  bottom: 4.9rem;
+  border: 1px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.347);
+  background-color: transparent;
+  cursor: pointer;
+}
