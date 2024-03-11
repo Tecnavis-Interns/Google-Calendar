@@ -24,7 +24,7 @@ body {
 .topRightCorner {
   width: 0.5rem; /* Adjust as needed */
   height: 0.5rem; /* Adjust as needed */
-  background-color: #1967d2; /* Red color */
+  background-color: #1967d2; 
   position: absolute;
   top: 0;
   right: 0;
@@ -34,7 +34,7 @@ body {
 .bottomLeftCorner {
   width: 0.5rem; /* Adjust as needed */
   height: 0.5rem; /* Adjust as needed */
-  background-color: #188038; /* Red color */
+  background-color: #188038; 
   position: absolute;
   bottom: 0;
   left: 0;
@@ -44,7 +44,7 @@ body {
 .bottomRightCorner {
   width: 0; /* Adjust as needed */
   height: 0; /* Adjust as needed */
-  border-top: 0.5rem solid #ff0000; /* Red color */
+  border-top: 0.5rem solid #f72a25; /* Red color */
   border-right: 0.5rem solid transparent; /* Transparent to create triangle */
   background-color: white; /* White color for the other half */
   position: absolute;
@@ -104,4 +104,23 @@ body {
 .arrow{
   margin-left: 3rem;
   color: #6d7075;
+}
+
+.day{
+  color: #4285f4;
+  font-weight: 700;
+}
+.todayDate{
+  background-color: rgb(37 99 235);
+  color: #ffff;
+}
+.calendarBorder{
+  border-color: rgb(226 232 240);
+}
+.monthText{
+  color: rgb(107 114 128);
+}
+
+.border{
+  border-color: rgb(226 232 240);
 }

@@ -15,7 +15,14 @@ export default {
       'bermuda': '#78dcca',
       'greyish': '#606368'
     },
-    extend: {},
+    extend: {
+      fontFamily:{
+        sans: ["Open Sans"]
+      },
+      gridTemplateColumns: {
+        "1/5" : "1fr 5fr"
+      }
+    },
   },
   plugins: [],
 };
