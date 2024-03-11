@@ -1,11 +1,12 @@
 import dayjs from "dayjs";
 import React, { useContext, useEffect, useState } from "react";
-import { getMonth } from "../util";
 import GlobalContext from "../contexts/GlobalContext";
+import { getMonth } from "../util"; // Ensure correct import path
 
 export default function SmallCalendar() {
   const [currentMonthIdx, setCurrentMonthIdx] = useState(dayjs().month());
-  const [currentMonth, setCurrentMonth] = useState(getMonth());
+  const [currentMonth, setCurrentMonth] = useState([]);
+
   useEffect(() => {
     setCurrentMonth(getMonth(currentMonthIdx));
   }, [currentMonthIdx]);
@@ -28,18 +29,22 @@ export default function SmallCalendar() {
     const format = "DD-MM-YY";
     const thisDay = dayjs().format(format);
     const currDay = day.format(format);
-    if (thisDay === currDay) {
-      return "todayDate rounded-full";
-    } else {
-      return "";
-    }
+    return thisDay === currDay ? "todayDate rounded-full" : "";
   }
+
+  // Ensure that currentMonth is an array of dayjs objects
+  if (!Array.isArray(currentMonth) || currentMonth.length === 0) {
+    return null; // Return null if currentMonth is not correctly initialized
+  }
+
+  // Set the date to the first day of the current month
+  const firstDayOfMonth = dayjs().set('month', currentMonthIdx).startOf('month');
 
   return (
     <div className="mt-9">
       <header className="flex justify-between">
         <p className="font-bold monthText">
-          {dayjs().month(currentMonthIdx).format("MMMM YYYY")}
+          {firstDayOfMonth.format("MMMM YYYY")}
         </p>
         <div>
           <button onClick={handlePrevMonth}>
@@ -55,11 +60,6 @@ export default function SmallCalendar() {
         </div>
       </header>
       <div className="grid grid-cols-7 grid-rows-6">
-        {currentMonth[0].map((day, i) => {
-          <span key={i} className="text-sm py-1 text-center">
-            {day.format("dd").charAt(0)}
-          </span>;
-        })}
         {currentMonth.map((row, i) => (
           <React.Fragment key={i}>
             {row.map((day, idx) => (

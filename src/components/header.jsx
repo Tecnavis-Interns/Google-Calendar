@@ -1,19 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Logo from "./Logo";
 import GlobalContext from "../contexts/GlobalContext";
 import dayjs from "dayjs";
 
 export function HomeHeader() {
   const { monthIndex, setMonthIndex } = useContext(GlobalContext);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (typeof monthIndex === "undefined") {
+      setMonthIndex(dayjs().month());
+    }
+
+    setLoading(false);
+  }, [setMonthIndex, monthIndex, loading]);
+
   function handlePrevMonth() {
     setMonthIndex(monthIndex - 1);
   }
+  
   function handleNextMonth() {
     setMonthIndex(monthIndex + 1);
   }
+
   function handleReset(){
-    setMonthIndex(monthIndex === dayjs().month()? monthIndex + Math.random() :dayjs().month())
+    setMonthIndex(dayjs().month());
   }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <div className="header flex items-center px-4 py-2">
@@ -31,7 +48,7 @@ export function HomeHeader() {
           </button>
         </div>
         <h2 className="ml-4 text-xl font-bold monthText">
-          {dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}
+          {dayjs().set('month', monthIndex).startOf('month').format("MMMM YYYY")}
         </h2>
       </div>
     </>
