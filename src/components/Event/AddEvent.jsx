@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import GlobalContext from "../../contexts/GlobalContext";
 
 export default function AddEvent() {
-  const { setShowAddEvent } = useContext(GlobalContext);
+  const { setShowAddEvent ,daySelected} = useContext(GlobalContext);
   const [title, setTitle] = useState("");
   return (
     <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
@@ -28,6 +28,7 @@ export default function AddEvent() {
               onChange={(e) => setTitle(e.target.value)}
             />
             <span className="material-icons-outlined text-gray-400">schedule</span>
+            <p>{daySelected.format("dddd, MMMM DD")}</p>
           </div>
         </div>
       </form>

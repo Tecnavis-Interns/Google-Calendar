@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import GlobalContext from "../contexts/GlobalContext";
 import { getMonth } from "../util"; // Ensure correct import path
 
-
 export default function SmallCalendar() {
   const [currentMonthIdx, setCurrentMonthIdx] = useState(dayjs().month());
   const [currentMonth, setCurrentMonth] = useState([]);
@@ -69,13 +68,21 @@ export default function SmallCalendar() {
         </div>
       </header>
       <div className="grid grid-cols-7 grid-rows-6">
+        {currentMonth &&
+          currentMonth[0] &&
+          currentMonth[0].map((day, i) => (
+            <span key={i} className="text-sm py-1 text-center">
+              {day.format("dd").charAt(0)}
+            </span>
+          ))}
+
         {currentMonth.map((row, i) => (
           <React.Fragment key={i}>
             {row.map((day, idx) => (
               <button
                 key={idx}
                 onClick={() => {
-                  setSmallCalendarMonth(currentMonthIdx); 
+                  setSmallCalendarMonth(currentMonthIdx);
                   setDaySelected(day);
                 }}
                 className={`py-1 w-full ${getDay(day)}`}

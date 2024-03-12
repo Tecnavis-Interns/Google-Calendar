@@ -28,9 +28,7 @@ export function HomeHeader() {
     window.location.reload(false);
   }
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+
 
   return (
     <>
