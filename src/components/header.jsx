@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 
 export function HomeHeader() {
   const { monthIndex, setMonthIndex } = useContext(GlobalContext);
+  const [currentMonthIdx, setCurrentMonthIdx] = useState(dayjs().month());
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

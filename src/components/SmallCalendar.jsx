@@ -30,22 +30,29 @@ export default function SmallCalendar() {
     const format = "DD-MM-YY";
     const thisDay = dayjs().format(format);
     const currDay = day.format(format);
-    return thisDay === currDay ? "todayDate rounded-full" : "";
-  }
-
-  // Ensure that currentMonth is an array of dayjs objects
-  if (!Array.isArray(currentMonth) || currentMonth.length === 0) {
-    return null; // Return null if currentMonth is not correctly initialized
+    const slcDay = daySelected && daySelected.format(format);
+    if (thisDay === currDay) {
+      return "todayDate rounded-full text-white";
+    } else if (currDay === slcDay) {
+      return "bg-blue-100 rounded-full text-blue-600 font-bold";
+    } else {
+      return "";
+    }
   }
 
   // Set the date to the first day of the current month
-  const firstDayOfMonth = dayjs().set('month', currentMonthIdx).startOf('month');
+  const firstDayOfMonth = dayjs()
+    .set("month", currentMonthIdx)
+    .startOf("month");
 
   return (
     <div className="mt-9">
       <header className="flex justify-between">
         <p className="font-bold monthText">
-          {dayjs().month(currentMonthIdx).format("MMMM YYYY")}
+          {dayjs()
+            .set("month", currentMonthIdx)
+            .startOf("month")
+            .format("MMMM YYYY")}
         </p>
         <div>
           <button onClick={handlePrevMonth}>
