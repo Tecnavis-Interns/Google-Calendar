@@ -18,7 +18,7 @@ function App() {
       <HomeHeader />
 
       <React.Fragment>
-        <div className="h-screen flex flex-col">
+        <div className="h-screen flex flex-col calendarH">
           <h1 className="text-2xl font-bold hover:underline"></h1>
           <div className="flex flex-1">
             <Sidebar />

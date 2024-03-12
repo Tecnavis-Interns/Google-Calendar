@@ -11,7 +11,8 @@ export default function SmallCalendar() {
     setCurrentMonth(getMonth(currentMonthIdx));
   }, [currentMonthIdx]);
 
-  const { monthIndex, setSmallCalendarMonth } = useContext(GlobalContext);
+  const { monthIndex, setSmallCalendarMonth, setDaySelected, daySelected } =
+    useContext(GlobalContext);
 
   useEffect(() => {
     setCurrentMonthIdx(monthIndex);
@@ -44,7 +45,7 @@ export default function SmallCalendar() {
     <div className="mt-9">
       <header className="flex justify-between">
         <p className="font-bold monthText">
-          {firstDayOfMonth.format("MMMM YYYY")}
+          {dayjs().month(currentMonthIdx).format("MMMM YYYY")}
         </p>
         <div>
           <button onClick={handlePrevMonth}>
@@ -67,6 +68,7 @@ export default function SmallCalendar() {
                 key={idx}
                 onClick={() => {
                   setSmallCalendarMonth(currentMonthIdx);
+                  setDaySelected(day);
                 }}
                 className={`py-1 w-full ${getDay(day)}`}
               >
