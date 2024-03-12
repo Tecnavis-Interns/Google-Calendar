@@ -4,20 +4,22 @@ import { HomeHeader } from "./components/header";
 import Sidebar from "./components/Sidebar";
 import Month from "./components/Month";
 import { getMonth } from "./util";
+import AddEvent from "./components/Event/AddEvent";
 import GlobalContext from "./contexts/GlobalContext";
 function App() {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
-  const { monthIndex } = useContext(GlobalContext);
+  const { monthIndex, showAddEvent } = useContext(GlobalContext);
 
   useEffect(() => {
     setCurrentMonth(getMonth(monthIndex));
   }, [monthIndex]);
-  
+
   return (
     <>
       <HomeHeader />
 
       <React.Fragment>
+        {showAddEvent && <AddEvent />}
         <div className="h-screen flex flex-col calendarH">
           <h1 className="text-2xl font-bold hover:underline"></h1>
           <div className="flex flex-1">

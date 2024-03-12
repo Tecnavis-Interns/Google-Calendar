@@ -5,6 +5,7 @@ export default function ContextWrapper(props) {
   const [monthIndex, setMonthIndex] = useState(dayjs().month());
   const [smallCalendarMonth, setSmallCalendarMonth] = useState(null);
   const [daySelected, setDaySelected] = useState(null);
+  const [showAddEvent, setShowAddEvent] = useState(false);
   useEffect(() => {
     if (smallCalendarMonth !== null) {
       setMonthIndex(smallCalendarMonth);
@@ -19,6 +20,8 @@ export default function ContextWrapper(props) {
         setSmallCalendarMonth,
         daySelected,
         setDaySelected,
+        showAddEvent,
+        setShowAddEvent,
       }}
     >
       {props.children}

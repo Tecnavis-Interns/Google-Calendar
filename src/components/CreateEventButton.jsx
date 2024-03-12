@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import plusImg from "../assets/plus.svg";
-// import GlobalContext from "../context/GlobalContext";
+import GlobalContext from "../contexts/GlobalContext";
 export default function CreateEventButton() {
-  //   const { setShowEventModal } = useContext(GlobalContext);
+    const { setShowAddEvent } = useContext(GlobalContext);
   return (
     <button
-      onClick={() => setShowEventModal(true)}
+      onClick={() => setShowAddEvent(true)}
       className="border p-2 rounded-full flex items-center shadow-md hover:shadow-2xl mt-5 ml-5 custom-border"
       // Adding custom-border class
     >
