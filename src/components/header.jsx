@@ -19,13 +19,13 @@ export function HomeHeader() {
   function handlePrevMonth() {
     setMonthIndex(monthIndex - 1);
   }
-  
+
   function handleNextMonth() {
     setMonthIndex(monthIndex + 1);
   }
 
-  function handleReset(){
-    setMonthIndex(dayjs().month());
+  function handleReset() {
+    window.location.reload(false);
   }
 
   if (loading) {
@@ -37,7 +37,9 @@ export function HomeHeader() {
       <div className="header flex items-center px-4 py-2">
         <Logo />
         <p className="calendarName">Calendar</p>
-        <button onClick={handleReset} className="buttonToday rounded py-2 px-2">Today</button>
+        <button onClick={handleReset} className="buttonToday rounded py-2 px-2">
+          Today
+        </button>
         <div className="arrow">
           <button onClick={handlePrevMonth}>
             <span className="material-symbols-outlined px-2 py-1">
@@ -49,7 +51,10 @@ export function HomeHeader() {
           </button>
         </div>
         <h2 className="ml-4 text-xl font-bold monthText">
-          {dayjs().set('month', monthIndex).startOf('month').format("MMMM YYYY")}
+          {dayjs()
+            .set("month", monthIndex)
+            .startOf("month")
+            .format("MMMM YYYY")}
         </h2>
       </div>
     </>

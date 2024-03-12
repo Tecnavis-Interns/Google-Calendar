@@ -130,4 +130,7 @@ body, html {
 .calendarDiv{
   height: 90%;
 }
-
+.selectDate{
+  background-color: rgb(219 234 254);
+  color: rgb(37 99 235);
+}

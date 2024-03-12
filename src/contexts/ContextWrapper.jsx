@@ -3,12 +3,13 @@ import GlobalContext from "./GlobalContext";
 import dayjs from "dayjs";
 export default function ContextWrapper(props) {
   const [monthIndex, setMonthIndex] = useState(dayjs().month());
-  const { smallCalendarMonth, setSmallCalendarMonth } = useState(null);
-  useEffect(() =>{
-if (smallCalendarMonth !==null){
-  setMonthIndex(smallCalendarMonth)
-}
-  },[smallCalendarMonth])
+  const [smallCalendarMonth, setSmallCalendarMonth] = useState(null);
+  const [daySelected, setDaySelected] = useState(null);
+  useEffect(() => {
+    if (smallCalendarMonth !== null) {
+      setMonthIndex(smallCalendarMonth);
+    }
+  }, [smallCalendarMonth]);
   return (
     <GlobalContext.Provider
       value={{
@@ -16,6 +17,8 @@ if (smallCalendarMonth !==null){
         setMonthIndex,
         smallCalendarMonth,
         setSmallCalendarMonth,
+        daySelected,
+        setDaySelected,
       }}
     >
       {props.children}

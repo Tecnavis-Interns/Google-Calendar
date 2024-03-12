@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import GlobalContext from "../contexts/GlobalContext";
 import { getMonth } from "../util"; // Ensure correct import path
 
+
 export default function SmallCalendar() {
   const [currentMonthIdx, setCurrentMonthIdx] = useState(dayjs().month());
   const [currentMonth, setCurrentMonth] = useState([]);
@@ -34,7 +35,7 @@ export default function SmallCalendar() {
     if (thisDay === currDay) {
       return "todayDate rounded-full text-white";
     } else if (currDay === slcDay) {
-      return "bg-blue-100 rounded-full text-blue-600 font-bold";
+      return "selectDate rounded-full text-blue-600 font-bold";
     } else {
       return "";
     }
@@ -74,7 +75,7 @@ export default function SmallCalendar() {
               <button
                 key={idx}
                 onClick={() => {
-                  setSmallCalendarMonth(currentMonthIdx);
+                  setSmallCalendarMonth(currentMonthIdx); 
                   setDaySelected(day);
                 }}
                 className={`py-1 w-full ${getDay(day)}`}
