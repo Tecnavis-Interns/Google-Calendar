@@ -58,8 +58,9 @@ export function HomeHeader() {
             .format("MMMM YYYY")}
         </h2>
     </div>
-      <div className="flex items-center">
-        <img src={auth.currentUser.photoURL} alt="" />
+      <div className="flex items-center gap-3">
+        <img src={auth.currentUser.photoURL} alt="" width='40px' className="rounded-full"/>
+        <h4 className="font-bold">{auth.currentUser.displayName}</h4>
         <button onClick={() => signOut(auth)} className="btn">Sign Out</button>
       </div>
       </div>
