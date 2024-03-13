@@ -8,13 +8,18 @@ export default function AddEvent() {
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
 
+  const handleSubmit = (e) => {
+    console.log(e);
+    // const formData = new FormData(e.currentTarget)
+  }
+
   // debug
   // const currentDate = daySelected ? daySelected : dayjs();
 
   // end
   return (
     <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
-      <form className="bg-white rounded-lg shadow-2xl w-1/4" action="">
+      <form className="bg-white rounded-lg shadow-2xl w-1/4" onSubmit={handleSubmit}>
         <header className="eventHead px-4 py-2 flex justify-between items-center">
           <span className="material-icons-outlined text-gray-400">
             drag_handle

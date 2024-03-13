@@ -7,16 +7,12 @@ import { getAuth, signOut } from "firebase/auth";
 export function HomeHeader() {
   const auth = getAuth()
   const { monthIndex, setMonthIndex } = useContext(GlobalContext);
-  const [currentMonthIdx, setCurrentMonthIdx] = useState(dayjs().month());
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (typeof monthIndex === "undefined") {
       setMonthIndex(dayjs().month());
     }
-
-    setLoading(false);
-  }, [setMonthIndex, monthIndex, loading]);
+  }, [setMonthIndex, monthIndex]);
 
   function handlePrevMonth() {
     setMonthIndex(monthIndex - 1);
@@ -27,15 +23,12 @@ export function HomeHeader() {
   }
 
   function handleReset() {
-    window.location.reload(false);
+    setMonthIndex(dayjs().month());
   }
 
-
-
   return (
-    <>
     <div className="flex justify-between px-5">
-    <div className="header flex items-center items-center">
+      <div className="header flex items-center">
         <Logo />
         <p className="calendarName">Calendar</p>
         <button onClick={handleReset} className="buttonToday rounded py-2 px-2">
@@ -57,13 +50,12 @@ export function HomeHeader() {
             .startOf("month")
             .format("MMMM YYYY")}
         </h2>
-    </div>
+      </div>
       <div className="flex items-center gap-3">
         <img src={auth.currentUser.photoURL} alt="" width='40px' className="rounded-full"/>
         <h4 className="font-bold">{auth.currentUser.displayName}</h4>
         <button onClick={() => signOut(auth)} className="btn">Sign Out</button>
       </div>
-      </div>
-    </>
+    </div>
   );
 }

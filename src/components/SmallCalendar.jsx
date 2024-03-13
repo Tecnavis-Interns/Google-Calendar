@@ -11,19 +11,21 @@ export default function SmallCalendar() {
     setCurrentMonth(getMonth(currentMonthIdx));
   }, [currentMonthIdx]);
 
-  const { monthIndex, setSmallCalendarMonth, setDaySelected, daySelected } =
+  const { monthIndex, setSmallCalendarMonth, setDaySelected, daySelected, setMonthIndex } =
     useContext(GlobalContext);
 
   useEffect(() => {
     setCurrentMonthIdx(monthIndex);
-  }, [monthIndex]);
+  }, [monthIndex, setMonthIndex]);
 
   function handlePrevMonth() {
     setCurrentMonthIdx(currentMonthIdx - 1);
+    setMonthIndex(currentMonthIdx - 1); // Update monthIndex in global context
   }
-
+  
   function handleNextMonth() {
     setCurrentMonthIdx(currentMonthIdx + 1);
+    setMonthIndex(currentMonthIdx + 1); // Update monthIndex in global context
   }
 
   function getDay(day) {

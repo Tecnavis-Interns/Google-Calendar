@@ -8,7 +8,6 @@ import AddEvent from "./components/Event/AddEvent";
 import GlobalContext from "./contexts/GlobalContext";
 import { initializeApp } from 'firebase/app';
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useCollectionData } from "react-firebase-hooks/firestore";
 import SignIn from './components/SignIn'
 import { getAuth } from "firebase/auth";
 
