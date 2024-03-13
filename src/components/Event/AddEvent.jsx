@@ -6,6 +6,7 @@ const labelClass = ["indigo", "gray", "green", "blue", "red", "purple"];
 export default function AddEvent() {
   const { setShowAddEvent, daySelected } = useContext(GlobalContext);
   const [description, setDescription] = useState("");
+  const [selectedLabel, setSelectedLabel] = useState(labelClass[0]);
   const [title, setTitle] = useState("");
 
   // debug
@@ -54,20 +55,32 @@ export default function AddEvent() {
             <span className="material-icons-outlined text-gray-400">
               bookmark_border
             </span>
+
             <div className="flex gap-x-2">
               {labelClass.map((lblClass, i) => (
                 <span
                   key={i}
+                  onClick={() => setSelectedLabel(lblClass)}
                   className={`bg-${lblClass}-500 w-6 h-6 rounded-full flex items-center justify-center cursor-pointer`}
                 >
-                  <span className="material-icons-outlined text-white text-sm">
-                    check
-                  </span>
+                  {selectedLabel === lblClass && (
+                    <span className="material-icons-outlined text-white text-sm">
+                      check
+                    </span>
+                  )}
                 </span>
               ))}
             </div>
           </div>
         </div>
+        <footer className="flex justify-end w-100 border-t p-3 mt-5">
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded text-white"
+          >
+            Save
+          </button>
+        </footer>
       </form>
       {/* <div className="bg-purple-500">
         <div className="bg-red-500">
