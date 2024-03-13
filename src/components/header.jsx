@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import Logo from "./Logo";
 import GlobalContext from "../contexts/GlobalContext";
 import dayjs from "dayjs";
+import { getAuth, signOut } from "firebase/auth";
 
 export function HomeHeader() {
+  const auth = getAuth()
   const { monthIndex, setMonthIndex } = useContext(GlobalContext);
   const [currentMonthIdx, setCurrentMonthIdx] = useState(dayjs().month());
   const [loading, setLoading] = useState(true);
@@ -32,7 +34,8 @@ export function HomeHeader() {
 
   return (
     <>
-      <div className="header flex items-center px-4 py-2">
+    <div className="flex justify-between px-5">
+    <div className="header flex items-center items-center">
         <Logo />
         <p className="calendarName">Calendar</p>
         <button onClick={handleReset} className="buttonToday rounded py-2 px-2">
@@ -54,6 +57,11 @@ export function HomeHeader() {
             .startOf("month")
             .format("MMMM YYYY")}
         </h2>
+    </div>
+      <div className="flex items-center">
+        <img src={auth.currentUser.photoURL} alt="" />
+        <button onClick={() => signOut(auth)} className="btn">Sign Out</button>
+      </div>
       </div>
     </>
   );
