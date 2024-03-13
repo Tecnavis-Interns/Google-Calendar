@@ -10,7 +10,7 @@ const SignIn = () => {
       .then((result) => {
         // This is where you handle the sign-in success
         const user = result.user;
-        console.log('User signed in:', user);
+        console.log('User signed in');
       })
       .catch((error) => {
         // Handle errors here
