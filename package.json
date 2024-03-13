@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "dayjs": "^1.11.10",
+    "firebase": "^10.8.1",
     "hamburgers": "^1.2.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-firebase-hooks": "^5.1.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",

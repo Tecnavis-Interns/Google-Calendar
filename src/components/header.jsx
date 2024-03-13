@@ -2,19 +2,17 @@ import React, { useContext, useEffect, useState } from "react";
 import Logo from "./Logo";
 import GlobalContext from "../contexts/GlobalContext";
 import dayjs from "dayjs";
+import { getAuth, signOut } from "firebase/auth";
 
 export function HomeHeader() {
+  const auth = getAuth()
   const { monthIndex, setMonthIndex } = useContext(GlobalContext);
-  const [currentMonthIdx, setCurrentMonthIdx] = useState(dayjs().month());
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (typeof monthIndex === "undefined") {
       setMonthIndex(dayjs().month());
     }
-
-    setLoading(false);
-  }, [setMonthIndex, monthIndex, loading]);
+  }, [setMonthIndex, monthIndex]);
 
   function handlePrevMonth() {
     setMonthIndex(monthIndex - 1);
@@ -25,14 +23,12 @@ export function HomeHeader() {
   }
 
   function handleReset() {
-    window.location.reload(false);
+    setMonthIndex(dayjs().month());
   }
 
-
-
   return (
-    <>
-      <div className="header flex items-center px-4 py-2">
+    <div className="flex justify-between px-5">
+      <div className="header flex items-center">
         <Logo />
         <p className="calendarName">Calendar</p>
         <button onClick={handleReset} className="buttonToday rounded py-2 px-2">
@@ -55,6 +51,11 @@ export function HomeHeader() {
             .format("MMMM YYYY")}
         </h2>
       </div>
-    </>
+      <div className="flex items-center gap-3">
+        <img src={auth.currentUser.photoURL} alt="" width='40px' className="rounded-full"/>
+        <h4 className="font-bold">{auth.currentUser.displayName}</h4>
+        <button onClick={() => signOut(auth)} className="btn">Sign Out</button>
+      </div>
+    </div>
   );
 }

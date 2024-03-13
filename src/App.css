@@ -8,7 +8,6 @@ html {
 }
 .header {
   height: 5em;
-  padding-top: 20px;
   border-bottom: 0.2px solid #e5e7eb;
 }
 /* .header::after {
@@ -148,4 +147,11 @@ html {
 }
 .borderColorGray200 {
   border-color: #e1e5ea;
+}
+
+.btn{
+  background-color: #1967d2;
+  padding: 0.5rem;
+  border-radius: 10px;
+  color: white;
 }
