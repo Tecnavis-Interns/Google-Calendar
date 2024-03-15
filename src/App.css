@@ -141,7 +141,7 @@ html {
 .text-gray-400 {
   color: rgb(156 163 175);
 }
-.borderColorBlue500:focus{
+.borderColorBlue500:focus {
   border-color: #3b84f6;
   color: #3c4043;
 }
@@ -149,9 +149,13 @@ html {
   border-color: #e1e5ea;
 }
 
-.btn{
+.btn {
   background-color: #1967d2;
   padding: 0.5rem;
   border-radius: 10px;
   color: white;
+}
+
+.eventFont {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
 }

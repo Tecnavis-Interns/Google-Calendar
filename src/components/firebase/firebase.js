@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore"; // Import collection and addDoc functions
+import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore"; // Import
 
 const firebaseConfig = {
   apiKey: "AIzaSyCNcbGrE7DNUStcz91R41-DIY3jkGMD9-I",
@@ -31,9 +31,26 @@ export const addEventToFirestore = async (title, description, date, color) => {
     });
     console.log("Document written with ID: ", docRef.id);
     alert("Save Successful");
+    window.location.reload();
     return docRef.id; // Return the ID of the newly added document
   } catch (error) {
     console.error("Error adding document: ", error);
     return null; // Return null if there's an error
   }
 };
+
+const getEventsByDate = async (date) => {
+  try {
+    const eventsRef = collection(db, "Calendar");
+    const querySnapshot = await getDocs(eventsRef);
+    const events = querySnapshot.docs
+      .filter((doc) => doc.data().date === date.format("dddd, MMMM DD")) // Filter events based on the provided date
+      .map((doc) => ({ id: doc.id, ...doc.data() }));
+    return events;
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    return [];
+  }
+};
+
+export { getEventsByDate };
