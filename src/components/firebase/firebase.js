@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore"; // Import
 
 const firebaseConfig = {
@@ -13,14 +14,30 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth();
+let userEmail = null;
 
-export { db };
+const unsubscribe = onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in
+    userEmail = user.email;
+    console.log("User email:", userEmail);
+    // You can use the userEmail here or pass it to another function
+  } else {
+    userEmail = null;
+    // User is signed out
+    console.log("No user signed in");
+  }
+});
+
+export { db, userEmail };
 
 export const addEventToFirestore = async (title, description, date, color) => {
   console.log("Title:", title);
   console.log("Description:", description);
   console.log("Date:", date);
   console.log("Color:", color);
+  console.log("Check:", userEmail);
   // console.log("Date:", currentDate);
   try {
     const docRef = await addDoc(collection(db, "Calendar"), {
@@ -28,6 +45,7 @@ export const addEventToFirestore = async (title, description, date, color) => {
       description,
       date,
       color,
+      userEmail,
     });
     console.log("Document written with ID: ", docRef.id);
     alert("Save Successful");
@@ -44,7 +62,13 @@ const getEventsByDate = async (date) => {
     const eventsRef = collection(db, "Calendar");
     const querySnapshot = await getDocs(eventsRef);
     const events = querySnapshot.docs
-      .filter((doc) => doc.data().date === date.format("dddd, MMMM DD")) // Filter events based on the provided date
+      .filter((doc) => {
+        const eventData = doc.data();
+        return (
+          eventData.date === date.format("dddd, MMMM DD") &&
+          eventData.userEmail === userEmail
+        );
+      }) // Filter events based on the provided date
       .map((doc) => ({ id: doc.id, ...doc.data() }));
     return events;
   } catch (error) {
