@@ -1,6 +1,6 @@
 # Google Calendar Clone
 
-This project is a clone of Google Calendar, created as part of a collaborative effort by Shamal Khalid N P, Farha Thasni M and Nihal B. It aims to replicate the basic functionality and user interface of Google Calendar.
+This project is a clone of Google Calendar, created as part of a collaborative effort by Shamal Khalid N P, Sahal K C, Farha Thasni M and Nihal B. It aims to replicate the basic functionality and user interface of Google Calendar.
 
 ## Table of Contents
 
