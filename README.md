@@ -7,9 +7,7 @@ This project is a clone of Google Calendar, created as part of a collaborative e
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Usage](#usage))
 
 ## Features
 
@@ -29,9 +27,9 @@ This project is a clone of Google Calendar, created as part of a collaborative e
 
 ## Installation
 
-1. Clone the repository: https://github.com/your-username/google-calendar-clone.git
+1. Clone the repository: https://github.com/ShamalKhalid/Google-Calendar.git
 
-2. Navigate to the project directory: cd google-calendar-clone
+2. Navigate to the project directory: cd google-calendar
 
 3. Install dependencies: npm install
 
