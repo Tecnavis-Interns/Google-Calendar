@@ -6,23 +6,25 @@ import Month from "./components/Month";
 import { getMonth } from "./util";
 import AddEvent from "./components/Event/AddEvent";
 import GlobalContext from "./contexts/GlobalContext";
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "firebase/app";
 import { useAuthState } from "react-firebase-hooks/auth";
-import SignIn from './components/SignIn'
+import SignIn from "./components/SignIn";
 import { getAuth } from "firebase/auth";
+import { getAnalytics } from "firebase/analytics";
 
-const firebaseConfig = ({
-  apiKey: "AIzaSyDqOulC8RBC2m0BqKt5i27QKy3af-FACSk",
-  authDomain: "calender-clone.firebaseapp.com",
-  projectId: "calender-clone",
-  storageBucket: "calender-clone.appspot.com",
-  messagingSenderId: "926350498060",
-  appId: "1:926350498060:web:c7f062f443c8bf6c6f1129",
-  measurementId: "G-X01NPX82NM",
-});
+const firebaseConfig = {
+  apiKey: "AIzaSyCNcbGrE7DNUStcz91R41-DIY3jkGMD9-I",
+  authDomain: "calendar-clone90.firebaseapp.com",
+  projectId: "calendar-clone90",
+  storageBucket: "calendar-clone90.appspot.com",
+  messagingSenderId: "365727045115",
+  appId: "1:365727045115:web:d2f9974bf6c818b741a75e",
+  measurementId: "G-2G28X2TGVW",
+};
 
-const app = initializeApp(firebaseConfig)
-const auth = getAuth()
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+const analytics = getAnalytics(app);
 
 function App() {
   const [currentMonth, setCurrentMonth] = useState(getMonth());

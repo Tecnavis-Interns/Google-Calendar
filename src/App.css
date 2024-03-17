@@ -141,7 +141,7 @@ html {
 .text-gray-400 {
   color: rgb(156 163 175);
 }
-.borderColorBlue500:focus{
+.borderColorBlue500:focus {
   border-color: #3b84f6;
   color: #3c4043;
 }
@@ -149,9 +149,49 @@ html {
   border-color: #e1e5ea;
 }
 
-.btn{
+.btn {
   background-color: #1967d2;
   padding: 0.5rem;
   border-radius: 10px;
   color: white;
+}
+
+.eventFont {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* pop up */
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+}
+
+.popup {
+  background-color: purple;
+  border: 2px solid #ccc; /* border style */
+  padding: 20px;
+  border-radius: 5px;
+  width: 60%; /* Adjust width as needed */
+  height: 25vh;
+  max-width: 100%; /* Maximum width of the popup */
+  max-height: 80%; /* Maximum height of the popup */
+  overflow-y: auto; /* Enable scrolling if content exceeds the height */
+  position: relative;
+}
+
+.popup .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #aaa;
 }
