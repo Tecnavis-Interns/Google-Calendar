@@ -39,7 +39,7 @@ export default function AddEvent() {
       <form
         className="bg-white rounded-lg shadow-2xl w-1/4"
         onSubmit={handleSubmit}
-        method="po"
+        method="post"
       >
         <header className="eventHead px-4 py-2 flex justify-between items-center">
           <span className="material-icons-outlined text-gray-400">

@@ -49,7 +49,6 @@ export const addEventToFirestore = async (title, description, date, color) => {
     });
     console.log("Document written with ID: ", docRef.id);
     alert("Save Successful");
-    window.location.reload();
     return docRef.id; // Return the ID of the newly added document
   } catch (error) {
     console.error("Error adding document: ", error);
